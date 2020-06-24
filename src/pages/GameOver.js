@@ -1,5 +1,6 @@
 import React from 'react';
 import { useScore } from '../contexts/ScoreContext';
+import CTA from '../styled/CTA';
 
 export default function GameOver({ history }) {
   const [score] = useScore();
@@ -10,6 +11,7 @@ export default function GameOver({ history }) {
     <div>
       <h1>Game Over</h1>
       <p>{score}</p>
+      <CTA to='/'>Play Again?</CTA>
     </div>
   );
 }

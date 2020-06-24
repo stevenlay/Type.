@@ -9,7 +9,6 @@ export default function Home() {
       <CTA to='/game'>
         Click or type <Accent>'s'</Accent> to start playing!
       </CTA>
-      <h1>Home</h1>
     </div>
   );
 }

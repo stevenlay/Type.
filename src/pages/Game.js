@@ -12,31 +12,9 @@ export default function Game({ history }) {
   const MAX_SECONDS = 5;
   const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
   const [currentCharacter, setCurrentCharacter] = useState('');
-  const [score, setScore] = useScore();
-  const [ms, setMs] = useState(0);
+  const [score, setScore] = useScore(0);
+  const [ms, setMs] = useState(999);
   const [seconds, setSeconds] = useState(MAX_SECONDS);
-
-  useEffect(() => {
-    setRandomCharacter();
-    setScore(0);
-    const currentTime = new Date();
-    const interval = setInterval(() => updateTime(currentTime), 65);
-    return () => clearInterval(interval);
-  }, []);
-
-  const updateTime = startTime => {
-    const endTime = new Date();
-    const msPassedStr = (endTime.getTime() - startTime.getTime()).toString();
-    const formattedMSString = ('0000' + msPassedStr).slice(-5);
-    const updatedSeconds =
-      MAX_SECONDS - parseInt(formattedMSString.substring(0, 2));
-
-    const updatedMS =
-      1000 -
-      parseInt(formattedMSString.substring(formattedMSString.length - 3));
-    setSeconds(addLeadingZeros(updatedSeconds, 2));
-    setMs(addLeadingZeros(updatedMS, 2));
-  };
 
   const addLeadingZeros = (num, length) => {
     let zeros = '';
@@ -52,6 +30,27 @@ export default function Game({ history }) {
     }
   }, [seconds, ms, history]);
 
+  useEffect(() => {
+    const updateTime = startTime => {
+      const endTime = new Date();
+      const msPassedStr = (endTime.getTime() - startTime.getTime()).toString();
+      const formattedMSString = ('0000' + msPassedStr).slice(-5);
+      const updatedSeconds =
+        MAX_SECONDS - parseInt(formattedMSString.substring(0, 2));
+
+      const updatedMS =
+        1000 -
+        parseInt(formattedMSString.substring(formattedMSString.length - 3));
+      setSeconds(addLeadingZeros(updatedSeconds, 2));
+      setMs(addLeadingZeros(updatedMS, 2));
+    };
+    setRandomCharacter();
+    setScore(0);
+    const currentTime = new Date();
+    const interval = setInterval(() => updateTime(currentTime), 65);
+    return () => clearInterval(interval);
+  }, [setScore]);
+
   const keyUpHandler = useCallback(
     e => {
       if (e.key === currentCharacter) {
@@ -63,7 +62,7 @@ export default function Game({ history }) {
       }
       setRandomCharacter();
     },
-    [currentCharacter]
+    [score, setScore, currentCharacter]
   );
 
   useEffect(() => {

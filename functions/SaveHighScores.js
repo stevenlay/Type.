@@ -18,9 +18,8 @@ exports.handler = async event => {
   try {
     const records = await getHighScores(false);
     const lowestRecord = records[9];
-    console.log(lowestRecord);
     if (
-      lowestRecord === undefined ||
+      lowestRecord === 'undefined' ||
       typeof lowestRecord.fields.score === 'undefined' ||
       score > lowestRecord.fields.score
     ) {
@@ -28,7 +27,6 @@ exports.handler = async event => {
         id: lowestRecord.id,
         fields: { name, score }
       };
-      console.log(updatedRecord);
       await table.update([updatedRecord]);
       return {
         statusCode: 200,

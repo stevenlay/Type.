@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useScore } from '../contexts/ScoreContext';
-import { StyledLink } from '../styled/Navbar';
+import { StyledTitle } from '../styled/Random';
 import { StyledCharacter } from '../styled/Game';
 import CTA from '../styled/CTA';
 
@@ -25,16 +25,13 @@ export default function GameOver({ history }) {
         } else {
           setScoreMessage('Not a high score. Sorry!');
         }
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
     saveHighScore();
   });
   return (
     <div>
-      <h1>Game Over</h1>
+      <StyledTitle>Game Over</StyledTitle>
       <StyledCharacter>{score}</StyledCharacter>
       <div>{scoreMessage}</div>
       <CTA to='/game'>Play Again?</CTA>

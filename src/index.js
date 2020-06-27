@@ -20,6 +20,7 @@ ReactDOM.render(
     clientId={config.clientId}
     redirectUri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
+    audience={config.audience}
   >
     <ScoreProvider>
       <App />

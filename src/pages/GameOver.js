@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 export default function GameOver({ history }) {
   const [score] = useScore();
   const [scoreMessage, setScoreMessage] = useState('');
-  const { getTokenSilently, isAuthenticated } = useAuth0();
+  const { getAccessTokenSilently, isAuthenticated, user } = useAuth0();
   if (score === -1) {
     history.push('/');
   }
@@ -16,10 +16,10 @@ export default function GameOver({ history }) {
   useEffect(() => {
     const saveHighScore = async () => {
       try {
-        const token = await getTokenSilently;
+        const token = await getAccessTokenSilently();
         const options = {
           method: 'POST',
-          body: JSON.stringify({ name: 'Steven', score }),
+          body: JSON.stringify({ name: user['https://type/username'], score }),
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -33,8 +33,10 @@ export default function GameOver({ history }) {
         }
       } catch (err) {}
     };
-    saveHighScore();
-  });
+    if (isAuthenticated) {
+      saveHighScore();
+    }
+  }, [score, isAuthenticated, user, getAccessTokenSilently]);
   return (
     <div>
       <StyledTitle>Game Over</StyledTitle>

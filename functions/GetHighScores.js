@@ -1,4 +1,4 @@
-const { table, getHighScores } = require('../utils/Airtable');
+const { getHighScores } = require('./utils/Airtable');
 exports.handler = async (event, context, callback) => {
   try {
     const records = await getHighScores(true);

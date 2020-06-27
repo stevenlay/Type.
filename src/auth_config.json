@@ -1,4 +1,5 @@
 {
   "domain": "dev-zja1qa4p.us.auth0.com",
-  "clientId": "OCGzfa37FAujEUBtckTsoceNMaW0iXlr"
+  "clientId": "OCGzfa37FAujEUBtckTsoceNMaW0iXlr",
+  "audience": "https://typeapi"
 }

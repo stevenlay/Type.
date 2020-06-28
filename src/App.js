@@ -6,6 +6,7 @@ import HighScores from './pages/HighScores';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import { Container } from './styled/Container';
+import Loader from './styled/Loader';
 import { Main } from './styled/Main';
 import GlobalStyle from './styled/Global';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -22,7 +23,11 @@ function App() {
       <ThemeProvider theme={currentTheme}>
         <GlobalStyle />
         <Main>
-          {isLoading && <p>Loading...</p>}
+          {isLoading && (
+            <Loader>
+              <p>Loading...</p>
+            </Loader>
+          )}
           {!isLoading && (
             <Container>
               <Navbar toggleTheme={toggleTheme} />

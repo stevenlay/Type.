@@ -9,7 +9,6 @@ import {
 import { Accent } from '../styled/Random';
 import { useAuth0 } from '@auth0/auth0-react';
 import { LoginButton, LogoutButton } from './auth/Auth';
-import useTheme from '../hooks/UseTheme';
 
 export default function Navbar({ toggleTheme }) {
   const { isAuthenticated } = useAuth0();

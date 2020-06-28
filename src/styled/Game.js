@@ -18,9 +18,9 @@ export const StyledTimer = styled.p`
 `;
 
 export const StyledCharacter = styled.p`
-  font-size: 10rem;
+  font-size: 10em;
   grid-row: 2;
   grid-column: 1/4;
   text-align: center;
-  color: ;
+  color: var(--accent-color);
 `;

@@ -14,7 +14,7 @@ import { lightTheme, darkTheme } from './styled/Themes';
 
 function App() {
   const { isLoading } = useAuth0();
-  const theme = 'dark';
+  const theme = 'light';
   const currentTheme = theme === 'light' ? lightTheme : darkTheme;
   return (
     <Router>

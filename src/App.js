@@ -11,23 +11,23 @@ import Global from './styled/Global';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
-  const { loading } = useAuth0();
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  const { isLoading } = useAuth0();
   return (
     <Router>
       <Global />
       <Main>
-        <Container>
-          <Navbar />
-          <Switch>
-            <Route path='/game' component={Game} />
-            <Route path='/highScores' component={HighScores} />
-            <Route path='/gameOver' component={GameOver} />
-            <Route path='/' component={Home} />
-          </Switch>
-        </Container>
+        {isLoading && <p>Loading...</p>}
+        {!isLoading && (
+          <Container>
+            <Navbar />
+            <Switch>
+              <Route path='/game' component={Game} />
+              <Route path='/highScores' component={HighScores} />
+              <Route path='/gameOver' component={GameOver} />
+              <Route path='/' component={Home} />
+            </Switch>
+          </Container>
+        )}
       </Main>
     </Router>
   );

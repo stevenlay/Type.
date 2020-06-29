@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import CTA from '../styled/CTA';
 import { Accent, StyledTitle } from '../styled/Random';
+
 export default function Home({ history }) {
   const keyUpHandler = useCallback(
     e => {

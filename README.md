@@ -2,9 +2,9 @@
 
 Type. is a reaction-time based typing game where users can score by typing characters as fast as they can in a short time frame.
 
-The frontend is built using modern React (Hooks and Context API) and is used to manage global state.
+The frontend uses modern React (Hooks and Context API) and manages global state.
 
-The backend is built with serverless functions deployed on Netlify and uses Airtable as a database.
+The backend uses serverless functions served on Netlify and uses Airtable as a database.
 
 [Deployed site](https://determined-curran-d92e8e.netlify.app)
 

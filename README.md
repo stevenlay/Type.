@@ -32,4 +32,22 @@ AUTH0_DOMAIN=
 
 Create and fill the .env file in with the appropriate data and run using ```netlify dev```
 
-## How it looks
+## Screenshots
+
+### Home 
+![Home](screenshots/Home.png)
+
+### Login/Sign Up
+![Login/Sign Up](screenshots/Login:SignUp.png)
+
+### Game
+![Game](screenshots/Game.png)
+
+### Game Over
+![Game Over](screenshots/GameOver.png)
+
+### High Scores
+![High Scores](screenshots/High%20Scores.png)
+
+### Dark Mode
+![Dark Mode](screenshots/DarkTheme.png)
